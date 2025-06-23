@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeri Cinta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffe4ec, #ffe3f4);
+      color: #7b2d4f;
+      overflow-x: hidden;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 15px;
+      margin: 0;
+      background-color: rgba(255, 240, 245, 0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      font-size: 1.1em;
+      border-bottom: 2px dashed #ff94aa;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e75480;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff3c77;
+      text-shadow: 0 0 6px #ffbad2;
+    }
+
+    .container {
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8em;
+      color: #ff2d75;
+      margin-bottom: 20px;
+      text-shadow: 0 0 12px #ffd6e0;
+      animation: pulse 2.5s infinite;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      padding: 20px;
+    }
+
+    .gallery img,
+    .gallery video {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 4px solid #ffb6c1;
+      box-shadow: 0 0 12px rgba(255, 105, 135, 0.3);
+      transition: transform 0.4s, box-shadow 0.4s;
+      animation: fadeInUp 1s ease;
+    }
+
+    .gallery img:hover,
+    .gallery video:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 25px #ff8fa3, 0 0 30px #ffb6c1;
+    }
+
+    audio {
+      display: block;
+      margin: 30px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ffbad2;
+    }
+
+    /* Animasi background hearts */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hearts span {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center;
+      background-size: contain;
+      animation: fall 10s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="gallery.html">Galeri</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="letter.html">Quotes</a></li>
+      <li><a href="js/game.html">Game</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>✨ Random 💑 ✨</h1>
+
+    <!-- Musik Background -->
+    <audio autoplay loop controls>
+      <source src="musik/WhatsApp Audio 2025-06-24 at 00.41.19_dc45971c.mp3" type="audio/mpeg">
+      Browsermu tidak mendukung audio.
+    </audio>
+
+    <!-- Galeri Foto dan Video -->
+    <div class="gallery">
+      <img src="img/e16a90b44e9bce6380608322629e0a1c.jpg" alt="Photo 1">
+      <img src="img/1748162160143.jpg" alt="Photo 2">
+      <img src="img/1748162155783.jpg" alt="Photo 3">
+      <video src="img/1.mp4" controls loop muted></video>
+      <img src="img/IMG-20250217-WA0039.jpg" alt="Photo 4">
+      <img src="img/jj.jpg" alt="Photo 4">
+      <img src="img/IMG-20250205-WA0018.jpeg" alt="Photo 5">
+      <img src="img/im.png" alt="photo 9">
+      <img src="img/pucek.jpg" alt="Photo 6">
+      <video src="img/pantai.mp4" controls loop muted></video>
+      <img src="img/IMG-20250315-WA0041.jpg" alt="Photo 7">
+      <img src="img/IMG-20240809-WA0049.jpg" alt="Photo 8">
+    </div>
+  </div>
+
+  <!-- Background hearts -->
+  <div class="hearts">
+    <script>
+      for (let i = 0; i < 40; i++) {
+        const heart = document.createElement('span');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        document.querySelector('.hearts').appendChild(heart);
+      }
+    </script>
+  </div>
+
+</body>
+</html>
